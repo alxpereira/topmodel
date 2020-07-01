@@ -1,0 +1,26 @@
+{
+  "name": "modl-mongo",
+  "version": "1.0.0",
+  "description": "Model Plugin for MongoDB",
+  "keywords": [
+    "orm",
+    "javascript",
+    "mongo",
+    "mongodb",
+    "es6"
+  ],
+  "author": "Alexandre Pereira <alexandre.pereira@foundersfactory.co>",
+  "homepage": "",
+  "license": "WTFPL",
+  "main": "src/index.ts",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  }
+}

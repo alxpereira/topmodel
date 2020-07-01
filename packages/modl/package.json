@@ -1,0 +1,29 @@
+{
+  "name": "modl",
+  "version": "1.0.0",
+  "description": "TopModel Core package",
+  "keywords": [
+    "orm",
+    "javascript",
+    "es6"
+  ],
+  "author": "Alexandre Pereira <alexandre.pereira@foundersfactory.co>",
+  "homepage": "",
+  "license": "WTFPL",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "npm run clean && npm run compile",
+    "clean": "rimraf -rf ./dist",
+    "compile": "tsc"
+  },
+  "directories": {
+    "test": "__tests__"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "typescript": "^3.9.5"
+  }
+}

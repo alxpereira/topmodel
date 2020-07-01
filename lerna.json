@@ -1,0 +1,7 @@
+{
+  "packages": [
+    "packages/*"
+  ],
+  "stream":true,
+  "version": "independent"
+}
