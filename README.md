@@ -1,14 +1,16 @@
 # modl
 
-lightweight ORM for Minimalist Coder
+lightweight ORM for minimalist coders
 
+![](https://github.com/alxpereira/modl/workflows/lint-test/badge.svg)
+[![](https://badgen.now.sh/codecov/c/github/alxpereira/modl)](https://codecov.io/gh/alxpereira/modl/)
 ---
 
 ## Getting Started
 
 ### Installation
 
-```console
+```sh
 npm install modl
 ```
 

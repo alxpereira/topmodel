@@ -154,6 +154,10 @@ const schema = new Schema({
     }
 })
 
+class User extends Model {
+    constructor(data, { schema })
+}
+
 const user = new User({ firstname: 'John' })
 
 console.log(user.validation)
@@ -173,6 +177,10 @@ const schema = new Schema({
         type: String
     }
 })
+
+class User extends Model {
+    constructor(data, { schema })
+}
 
 const user = new User({ hack: 847846 })
 
