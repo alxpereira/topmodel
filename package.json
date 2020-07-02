@@ -1,6 +1,5 @@
 {
   "name": "topmodel",
-  "private": true,
   "scripts": {
     "build": "lerna run build",
     "test": "jest --coverage",
