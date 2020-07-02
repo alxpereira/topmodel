@@ -10,7 +10,7 @@ beautiful models with a lightweight ORM for minimalist coders
 
 ### Usage
 
-- [Basics](packages/topmodel/README.md)
-- [Options - Exposer](packages/topmodel/README.md#options.exposer)
-- [Options - Schema](packages/topmodel/README.md#options.schema)
-- [Validation](packages/topmodel/README.md#validation)
+- [Basics](packages/core/README.md)
+- [Options - Exposer](packages/core/README.md#options.exposer)
+- [Options - Schema](packages/core/README.md#options.schema)
+- [Validation](packages/core/README.md#validation)
