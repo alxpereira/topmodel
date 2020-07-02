@@ -64,7 +64,9 @@ const exposer = {
 }
 
 class User extends Model {
-    constructor(data, { exposer })
+    constructor(data){
+        super(data, { exposer })
+    }
 }
 
 const user = new User({ id: 1234, firstname: 'John', lastname: 'Doe' })
@@ -86,7 +88,9 @@ const schema = new Schema({
 })
 
 class User extends Model {
-    constructor(data, { schema })
+    constructor(data){
+        super(data, { schema })
+    }
 }
 ```
 
@@ -116,7 +120,9 @@ const schema = new Schema({
 })
 
 class User extends Model {
-    constructor(data, { schema })
+    constructor(data){
+        super(data, { schema })
+    }
 }
 ```
 
@@ -155,7 +161,9 @@ const schema = new Schema({
 })
 
 class User extends Model {
-    constructor(data, { schema })
+    constructor(data){
+        super(data, { schema })
+    }
 }
 
 const user = new User({ firstname: 'John' })
@@ -179,7 +187,9 @@ const schema = new Schema({
 })
 
 class User extends Model {
-    constructor(data, { schema })
+    constructor(data){
+        super(data, { schema })
+    }
 }
 
 const user = new User({ hack: 847846 })
