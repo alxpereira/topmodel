@@ -1,7 +1,7 @@
 {
-  "name": "modl-mongo",
+  "name": "@topmodel/mongo",
   "version": "1.0.0",
-  "description": "Model Plugin for MongoDB",
+  "description": "Topmodel Connector for MongoDB",
   "keywords": [
     "orm",
     "javascript",
@@ -10,7 +10,7 @@
     "es6"
   ],
   "author": "Alexandre Pereira <alexandre.pereira@foundersfactory.co>",
-  "homepage": "",
+  "homepage": "https://github.com/alxpereira/topmodel",
   "license": "WTFPL",
   "main": "src/index.ts",
   "directories": {

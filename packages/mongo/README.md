@@ -1,11 +1,11 @@
-# `modl-mongo`
+# `@topmodel/mongo`
 
 > TODO: description
 
 ## Usage
 
 ```
-const modlMongo = require('modl-mongo');
+const modlMongo = require('@topmodel/mongo');
 
 // TODO: DEMONSTRATE API
 ```

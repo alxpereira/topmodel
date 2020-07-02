@@ -1,15 +1,23 @@
-# `modl`
+# `@topmodel/core`
 
-## Installation
+### Installation
 
-See [Installation guide](../../README.md)
+With `npm`
+```sh
+npm install @topmodel/core
+```
+
+or `yarn`
+```sh
+yarn add @topmodel/core
+```
 
 ## Basic
 
-Modl works as an extend on Javascript Classes 
+TopModel works as an extend on Javascript Classes 
 
 ```js
-import { Model } from 'modl'
+import { Model } from '@topmodel/core'
 
 class User extends Model {
     // ... constructor or other properties
@@ -22,14 +30,14 @@ const user = new User({ firstname: 'John', lastname: 'Doe' })
 
 ## Constructor
 
-Modl extended classes can activate features by populating [options](#options) in the constructor super call with the following arguments `super(data, options)`
+TopModel extended classes can activate features by populating [options](#options) in the constructor super call with the following arguments `super(data, options)`
 
 - `data` - your object data
-- `option` - modl options object
+- `option` - TopModel options object
 
 Example 
 ```js
-import { Model } from 'modl'
+import { Model } from '@topmodel/core'
 
 const options = { /* ... your options */ }
 
@@ -47,7 +55,7 @@ const user = new User({ firstname: 'John', lastname: 'Doe' })
 
 Options can power your classes with features, plugins etc...
 
-Modl includes the following options by default: 
+TopModel includes the following options by default: 
 
 
 ### `options.exposer`
@@ -55,7 +63,7 @@ The exposer feature allows you to display only a part of your object, super usef
 
 Example
 ```js
-import { Model } from 'modl'
+import { Model } from '@topmodel/core'
 
 const exposer = {
     public: [
@@ -75,11 +83,11 @@ console.log(user.expose('public')) // { id: 1234 }
 ```
 
 ### `options.schema`
-You can add a schema to any modl extended class to activate feature such as validation for example. More documentation in the [schema section](#schema)
+You can add a schema to any TopModel extended class to activate feature such as validation for example. More documentation in the [schema section](#schema)
 
 Example
 ```js
-import { Model, Schema } from 'modl'
+import { Model } from '@topmodel/core'
 
 const schema = new Schema({
     firstname: {
@@ -96,7 +104,7 @@ class User extends Model {
 
 ## Schema
 
-Schemas allows you to use modl for validation.
+Schemas allows you to use TopModel for validation.
 Properties options are the following : 
 
 - `type` - data type to be validated (see JS Types)

@@ -1,5 +1,5 @@
 {
-  "name": "modl",
+  "name": "@topmodel/core",
   "version": "1.0.0",
   "description": "TopModel Core package",
   "keywords": [
@@ -8,7 +8,7 @@
     "es6"
   ],
   "author": "Alexandre Pereira <alexandre.pereira@foundersfactory.co>",
-  "homepage": "",
+  "homepage": "https://github.com/alxpereira/topmodel",
   "license": "WTFPL",
   "main": "dist/index.js",
   "files": [

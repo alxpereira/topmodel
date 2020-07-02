@@ -1,18 +1,12 @@
-# modl
+# topmodel
 
-lightweight ORM for minimalist coders
+beautiful models with a lightweight ORM for minimalist coders
 
 ![](https://github.com/alxpereira/modl/workflows/lint-test/badge.svg)
 [![](https://badgen.now.sh/codecov/c/github/alxpereira/modl)](https://codecov.io/gh/alxpereira/modl/)
 ---
 
 ## Getting Started
-
-### Installation
-
-```sh
-npm install modl
-```
 
 ### Usage
 
