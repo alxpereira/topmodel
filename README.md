@@ -2,15 +2,15 @@
 
 beautiful models with a lightweight ORM for minimalist coders
 
-![](https://github.com/alxpereira/modl/workflows/lint-test/badge.svg)
-[![](https://badgen.now.sh/codecov/c/github/alxpereira/modl)](https://codecov.io/gh/alxpereira/modl/)
+![](https://github.com/alxpereira/topmodel/workflows/lint-test/badge.svg)
+[![](https://badgen.now.sh/codecov/c/github/alxpereira/topmodel)](https://codecov.io/gh/alxpereira/topmodel/)
 ---
 
 ## Getting Started
 
 ### Usage
 
-- [Basics](packages/modl/README.md)
-- [Options - Exposer](packages/modl/README.md#options.exposer)
-- [Options - Schema](packages/modl/README.md#options.schema)
-- [Validation](packages/modl/README.md#validation)
+- [Basics](packages/topmodel/README.md)
+- [Options - Exposer](packages/topmodel/README.md#options.exposer)
+- [Options - Schema](packages/topmodel/README.md#options.schema)
+- [Validation](packages/topmodel/README.md#validation)

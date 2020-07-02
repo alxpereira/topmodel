@@ -24,9 +24,5 @@
     "ts-loader": "^7.0.5",
     "tslib": "^2.0.0",
     "typescript": "^3.9.5"
-  },
-  "dependencies": {
-    "modl": "file:packages/modl",
-    "modl-mongo": "file:packages/modl-mongo"
   }
 }

@@ -5,7 +5,5 @@
 ## Usage
 
 ```
-const modlMongo = require('@topmodel/mongo');
-
 // TODO: DEMONSTRATE API
 ```

@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-// import { Model } from 'modl'
+// import { Model } from '@topmodel/core'
 import MongoPlugin from '../src'
 
 test('MongoPlugin is a Class', () => {
