@@ -87,7 +87,7 @@ You can add a schema to any TopModel extended class to activate feature such as 
 
 Example
 ```js
-import { Model } from '@topmodel/core'
+import { Model, Schema } from '@topmodel/core'
 
 const schema = new Schema({
     firstname: {
