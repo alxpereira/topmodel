@@ -2,7 +2,8 @@ import { Schema, ValidationOutput, SchemaErrors } from './schema'
 
 interface Options {
     exposer?: Record<string, Array<string>>,
-    schema?: Schema
+    schema?: Schema,
+    db?: any
 }
 
 export class Model {
