@@ -118,7 +118,7 @@ describe('Mongo Plugin - update', () => {
 
     const inserted = await s.create('foo', data)
     expect(inserted).toBeDefined()
-    const updateData = { foo: 'bar-update' } 
+    const updateData = { foo: 'bar-update' }
     const updated = await s.update('foo', Object.assign(inserted.data, updateData))
     expect(updated).toBeDefined()
     expect(updated.data).toBeDefined()

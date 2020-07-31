@@ -27,10 +27,10 @@ export class Model {
     }
 
     public expose (exposerType?: string): Object {
-      if (!this.options || !this.options.exposer) { return this.data }
+      if (!this.options || !this.options.exposer || !exposerType) { return this.data }
 
       return Object.keys(this.data)
-        .filter((key) => this.options.exposer[exposerType].includes(key))
+        .filter((key) => this.options.exposer![exposerType].includes(key))
         .reduce((obj:Record<string, any>, key: string) => {
           obj[key] = this.data[key]
           return obj

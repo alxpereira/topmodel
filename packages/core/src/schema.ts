@@ -1,8 +1,8 @@
 class ValidationError {
-    public message: String
-    public key: String
+    public message: string
+    public key: string
 
-    constructor (key: String, message: String) {
+    constructor (key: string, message: string) {
       this.key = key
       this.message = `Validation Error: ${message}`
     }
@@ -29,7 +29,7 @@ export class Schema {
   private schema: Object
 
   private verify (data:Object, schema:Object): ValidationOutput {
-    let errors = []
+    let errors : ValidationError[] = []
     const values = {}
     for (const [key, value] of Object.entries(data)) {
       if (value instanceof Object && !Array.isArray(value)) {
