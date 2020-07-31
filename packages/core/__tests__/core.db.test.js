@@ -105,4 +105,20 @@ describe('Model Database', () => {
     expect(db.update).toHaveBeenCalled()
     expect(t.body).toBe(testDataUpdated.data)
   })
+
+  test('Model.save is chainable', async () => {
+    const db = new MockDB()
+    class Test extends Model {
+      constructor (data) {
+        super(data, { db })
+      }
+    }
+
+    const data = { foo: 'bar' }
+    const test = new Test(data)
+
+    const exposed = (await test.save()).expose()
+    expect(exposed).toBeDefined()
+    expect(exposed).toBe(testData.data)
+  })
 })

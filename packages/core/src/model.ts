@@ -34,6 +34,16 @@ export class Model {
       return this.data
     }
 
+    validate () : Model {
+      const { schema } = this.options
+      if (!schema) throw new Error(SchemaErrors.NoSchema)
+
+      const { errors } = schema.validate(this.data)
+      if (errors) throw errors
+
+      return this
+    }
+
     public get validation (): ValidationOutput {
       const { schema } = this.options
       if (!schema) throw new Error(SchemaErrors.NoSchema)
@@ -45,7 +55,7 @@ export class Model {
       if (!this.options.exposer || !exposerType) { return this.data }
 
       return Object.keys(this.data)
-        .filter((key) => this.options.exposer![exposerType].includes(key))
+        .filter((key: string) => this.options.exposer![exposerType].includes(key))
         .reduce((obj:Record<string, any>, key: string) => {
           obj[key] = this.data[key]
           return obj

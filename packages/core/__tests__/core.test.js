@@ -85,3 +85,57 @@ test('Model validation is validating a simple data', () => {
   expect(values).toBeDefined()
   expect(values.firstname).toBe(TEST_FIRSTNAME)
 })
+
+test('Model.validate should throw if no schema', () => {
+  class Test extends Model {}
+  const test = new Test({ firstname: 'Jean-Michel' })
+
+  try {
+    expect(test.validate()).toThrow()
+  } catch (error) {
+    expect(error.message).toBe(SchemaErrors.NoSchema)
+  }
+})
+
+test('Model.validate should throw if errors', () => {
+  class Test extends Model {
+    constructor (data) {
+      super(data, {
+        schema: new Schema({
+          firstname: {
+            type: String
+          }
+        })
+      })
+    }
+  }
+
+  const test = new Test({ firstname: 123445 })
+
+  try {
+    expect(test.validate()).toThrow()
+  } catch (errors) {
+    expect(errors).toBeDefined()
+    expect(errors[0].key).toBe('firstname')
+    expect(errors[0].message).toContain(SchemaErrors.TypeError)
+  }
+})
+
+test('Model.validate should validate and be chainable', () => {
+  class Test extends Model {
+    constructor (data) {
+      super(data, {
+        schema: new Schema({
+          firstname: {
+            type: String
+          }
+        })
+      })
+    }
+  }
+
+  const data = { firstname: 'John-Michel' }
+  const test = new Test(data)
+
+  expect(test.validate().expose()).toBe(data)
+})
