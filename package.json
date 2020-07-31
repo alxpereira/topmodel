@@ -4,7 +4,13 @@
     "build": "lerna run build",
     "test": "jest --coverage",
     "prepare": "lerna clean --yes && lerna link && lerna bootstrap",
-    "lint": "lerna exec --parallel -- eslint"
+    "lint": "eslint --ext .ts,.js ./"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run test",
+      "pre-push": "npm run lint"
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.10.3",
@@ -20,6 +26,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
+    "husky": "^4.2.5",
     "jest": "^26.1.0",
     "lerna": "^3.22.1",
     "ts-loader": "^7.0.5",
