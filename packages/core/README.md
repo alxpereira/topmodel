@@ -158,6 +158,10 @@ const schema = new Schema({
 
 ## Validation
 
+Topmodel includes a no-dependency fully integrated validation system
+
+### `{model}.validation`
+
 You can use object schema validation by calling the getter `{model}.validation`
 
 Example with valid data:
@@ -211,4 +215,72 @@ console.log(user.validation)
     }]
 }
 */
+```
+
+### `{model}.validate()`
+
+You can also use the validation method `{model}.validate()` which has two main differences : 
+
+- `validate()` will throw if an error occur
+- `validate()` doesn't return any value if valid, because it's chainable ❤️
+
+Usage : 
+
+With valid data & chained :
+
+```js
+// model setup
+const exposer = {
+    public: [
+        'id'
+    ]
+}
+
+const schema = new Schema({
+    id : {
+        type: Number
+    }
+    firstname: {
+        type: String
+    }
+})
+
+class User extends Model {
+    constructor(data){
+        super(data, { schema, exposer })
+    }
+}
+
+// [...]
+
+const user = new User({ id: 847846, firstname: 'John-Michel' })
+
+const exposed = user.validate().expose('public')
+console.log(exposed) // { id: 847846 }
+```
+
+With invalid data :
+```js
+// model setup
+const schema = new Schema({
+    firstname: {
+        type: String
+    }
+})
+
+class User extends Model {
+    constructor(data){
+        super(data, { schema })
+    }
+}
+
+// [...]
+
+const user = new User({ hack: 847846 })
+
+try {
+    user.validate()
+} catch (errors){
+    console.log(errors) // display validation errors
+}
 ```
