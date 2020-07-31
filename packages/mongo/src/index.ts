@@ -8,15 +8,17 @@ interface MongoOptions {
 }
 
 interface MongoResult {
+  success?: Boolean,
   id: string,
-  data: Record<string, any>
+  data?: Record<string, any>
 }
 
 export enum MongoErrors {
   MissingOptions = 'Missing options at mongo instanciation, `database & url` are required',
   MissingCollection = 'Missing collection in query',
   MissingCollectionOrData = 'Missing collection or data in query',
-  MissingId = 'Missing `id` or `_id` in params or data'
+  MissingId = 'Missing `id` or `_id` in params or data',
+  CouldNotDelete = 'Could not delete this document'
 }
 
 export class MongoPlugin {
@@ -92,5 +94,18 @@ export class MongoPlugin {
 
     const { value } = updated
     return { id: value._id, data: value }
+  }
+
+  async del (collection: string, id: string) : Promise<MongoResult|null> {
+    if (!collection) throw new Error(MongoErrors.MissingCollection)
+    if (!id) throw new Error(MongoErrors.MissingId)
+
+    await this.connect()
+    const result = await this.db.collection(collection).deleteOne({ _id: id })
+    this.client.close()
+
+    if (result.deletedCount !== 1) throw new Error(MongoErrors.CouldNotDelete)
+
+    return { success: true, id }
   }
 }
