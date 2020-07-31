@@ -1,5 +1,4 @@
 /* eslint-disable no-undef */
-// import { Model } from '@topmodel/core'
 import { MongoPlugin, MongoErrors } from '../src'
 
 const MONGO_URL = process.env.MONGO_URL

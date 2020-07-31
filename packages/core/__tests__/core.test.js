@@ -7,7 +7,7 @@ test('Model is a Class', () => {
 })
 
 test('Model().body is defined', () => {
-  const data = { foo: 'bar' }
+  const data = { id: 123, foo: 'bar' }
   const m = new Model(data)
   expect(m.body).toBe(data)
 })
@@ -19,7 +19,7 @@ test('Model().expose is defined', () => {
 })
 
 test('Model().expose() should return data', () => {
-  const data = { foo: 'bar' }
+  const data = { _id: '123', foo: 'bar' }
   const m = new Model(data)
   expect(m.expose()).toBe(data)
 })

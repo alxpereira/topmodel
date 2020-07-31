@@ -3,16 +3,31 @@ import { Schema, ValidationOutput, SchemaErrors } from './schema'
 interface Options {
     exposer?: Record<string, Array<string>>,
     schema?: Schema,
-    db?: any
+    db?: any,
+    table?: string
+}
+
+export enum ModelErrors {
+  MissingDB = 'Cannot proceed a db-related action, no `db` connector specified',
+  MissingId = 'Cannot proceed a get on database without an `id`'
 }
 
 export class Model {
+    private id: string|number
     private data: Record<string, any>
     private options: Options
 
-    constructor (data: Object, options?: Options) {
-      this.data = data
+    constructor (data: Record<string, any>, options?: Options) {
+      this.data = data || {}
       this.options = options || {}
+
+      if (this.data.id || this.data._id) {
+        this.id = this.data.id || this.data._id
+      }
+    }
+
+    private get table () : string {
+      return this.options.table || this.constructor.name.toLowerCase()
     }
 
     public get body (): Object {
@@ -27,7 +42,7 @@ export class Model {
     }
 
     public expose (exposerType?: string): Object {
-      if (!this.options || !this.options.exposer || !exposerType) { return this.data }
+      if (!this.options.exposer || !exposerType) { return this.data }
 
       return Object.keys(this.data)
         .filter((key) => this.options.exposer![exposerType].includes(key))
@@ -35,5 +50,32 @@ export class Model {
           obj[key] = this.data[key]
           return obj
         }, {})
+    }
+
+    public async read (): Promise<Model> {
+      const { db } = this.options
+      if (!db) throw new Error(ModelErrors.MissingDB)
+      if (!this.id) throw new Error(ModelErrors.MissingId)
+
+      const { id, data } = await db.read(this.table, this.id)
+
+      this.id = id
+      this.data = data
+
+      return this
+    }
+
+    public async save (): Promise<Model> {
+      const { db } = this.options
+      if (!db) throw new Error(ModelErrors.MissingDB)
+
+      const { id, data } = this.id
+        ? await db.update(this.table, this.data, this.id)
+        : await db.create(this.table, this.data)
+
+      this.id = id
+      this.data = data
+
+      return this
     }
 }
