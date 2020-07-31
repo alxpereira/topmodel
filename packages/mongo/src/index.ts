@@ -14,6 +14,7 @@ interface MongoResult {
 
 export enum MongoErrors {
   MissingOptions = 'Missing options at mongo instanciation, `database & url` are required',
+  MissingCollection = 'Missing collection in query',
   MissingCollectionOrData = 'Missing collection or data in query',
   MissingId = 'Missing `id` or `_id` in params or data'
 }
@@ -57,6 +58,18 @@ export class MongoPlugin {
 
     const { ops, insertedId } = inserted
     return { id: insertedId, data: ops[0] }
+  }
+
+  async read (collection: string, id: string) : Promise<MongoResult|null> {
+    if (!collection) throw new Error(MongoErrors.MissingCollection)
+    if (!id) throw new Error(MongoErrors.MissingId)
+
+    await this.connect()
+    const [result] = await this.db.collection(collection).find({ _id: id }).limit(1).toArray()
+    this.client.close()
+
+    if (!result) return null
+    return { id: result._id, data: result }
   }
 
   async update (collection: string, data: Record<string, any>, id: string) : Promise<MongoResult> {

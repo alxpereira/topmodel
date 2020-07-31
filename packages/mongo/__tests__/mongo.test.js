@@ -92,6 +92,60 @@ describe('Mongo Plugin - create', () => {
   })
 })
 
+describe('Mongo Plugin - read', () => {
+  test('MongoPlugin read should read', async () => {
+    const s = new MongoPlugin({
+      url: MONGO_URL,
+      database: MONGO_DATABASE
+    })
+    const data = { foo: 'bar' }
+    const inserted = await s.create('foo', data)
+    expect(inserted).toBeDefined()
+
+    const result = await s.read('foo', inserted.id)
+    expect(result).toBeDefined()
+    expect(result.data).toBeDefined()
+    expect(result.data.foo).toBe(data.foo)
+  })
+
+  test('MongoPlugin read should return null when invalid id', async () => {
+    const s = new MongoPlugin({
+      url: MONGO_URL,
+      database: MONGO_DATABASE
+    })
+    const result = await s.read('foo', 'blablabla')
+    expect(result).toBeNull()
+  })
+
+  test('MongoPlugin read should throw an error if no collection specified', async () => {
+    const s = new MongoPlugin({
+      url: MONGO_URL,
+      database: MONGO_DATABASE
+    })
+
+    try {
+      expect(await s.read(null, 'blabla')).toThrow()
+    } catch (error) {
+      expect(error).toBeDefined()
+      expect(error.message).toBe(MongoErrors.MissingCollection)
+    }
+  })
+
+  test('MongoPlugin read should throw an error if no id specified', async () => {
+    const s = new MongoPlugin({
+      url: MONGO_URL,
+      database: MONGO_DATABASE
+    })
+
+    try {
+      expect(await s.read('foo')).toThrow()
+    } catch (error) {
+      expect(error).toBeDefined()
+      expect(error.message).toBe(MongoErrors.MissingId)
+    }
+  })
+})
+
 describe('Mongo Plugin - update', () => {
   test('MongoPlugin update should update', async () => {
     const s = new MongoPlugin({
