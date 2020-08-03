@@ -21,3 +21,6 @@ dist/
 
 # Mac stuff
 .DS_Store
+
+# VS Code
+.vscode
