@@ -1,6 +1,6 @@
 {
   "name": "@topmodel/mongo",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Topmodel Connector for MongoDB",
   "keywords": [
     "orm",
