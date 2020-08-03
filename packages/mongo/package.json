@@ -12,16 +12,17 @@
   "author": "Alexandre Pereira <alexandre.pereira@foundersfactory.co>",
   "homepage": "https://github.com/alxpereira/topmodel",
   "license": "WTFPL",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "directories": {
-    "lib": "lib",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "npm run clean && npm run compile",
+    "clean": "rimraf -rf ./dist",
+    "compile": "tsc"
   },
   "dependencies": {
     "mongodb": "^3.5.9"

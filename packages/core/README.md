@@ -1,4 +1,8 @@
 # `@topmodel/core`
+Modern ORM for minimalist coders
+
+- 0 dependency ! 
+- Test driven
 
 ## Installation
 

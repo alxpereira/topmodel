@@ -6,10 +6,10 @@ const testDataUpdated = { id: '123', data: { id: '123', foo: 'bar-updated' } }
 const testDataDeleted = { success: true, id: '123' }
 
 class MockDB {
-    create = jest.fn(() => Promise.resolve(testData))
-    read = jest.fn(() => Promise.resolve(testData))
-    update = jest.fn(() => Promise.resolve(testDataUpdated))
-    del = jest.fn(() => Promise.resolve(testDataDeleted))
+  create = jest.fn(() => Promise.resolve(testData))
+  read = jest.fn(() => Promise.resolve(testData))
+  update = jest.fn(() => Promise.resolve(testDataUpdated))
+  del = jest.fn(() => Promise.resolve(testDataDeleted))
 }
 
 describe('Model Database', () => {

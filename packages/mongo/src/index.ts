@@ -3,13 +3,13 @@ import { MongoClient } from 'mongodb'
 import { flatten } from './utils'
 
 interface MongoOptions {
-  url: string,
+  url: string
   database: string
 }
 
 interface MongoResult {
-  success?: Boolean,
-  id: string,
+  success?: boolean
+  id: string
   data?: Record<string, any>
 }
 
@@ -39,7 +39,7 @@ export class MongoPlugin {
     this.mongoUrl = options.url
   }
 
-  async connect (): Promise<Object> {
+  async connect (): Promise<Record<string, any>> {
     const client = await MongoClient.connect(this.mongoUrl, {
       useNewUrlParser: true,
       useUnifiedTopology: true
@@ -51,8 +51,13 @@ export class MongoPlugin {
     return { client: this.client, db: this.db }
   }
 
-  async create (collection: string, data: Object): Promise<MongoResult> {
-    if (!collection || !data) throw new Error(MongoErrors.MissingCollectionOrData)
+  async create (
+    collection: string,
+    data: Record<string, any>
+  ): Promise<MongoResult> {
+    if (!collection || !data) {
+      throw new Error(MongoErrors.MissingCollectionOrData)
+    }
 
     await this.connect()
     const inserted = await this.db.collection(collection).insertOne(data)
@@ -62,20 +67,30 @@ export class MongoPlugin {
     return { id: insertedId, data: ops[0] }
   }
 
-  async read (collection: string, id: string) : Promise<MongoResult|null> {
+  async read (collection: string, id: string): Promise<MongoResult | null> {
     if (!collection) throw new Error(MongoErrors.MissingCollection)
     if (!id) throw new Error(MongoErrors.MissingId)
 
     await this.connect()
-    const [result] = await this.db.collection(collection).find({ _id: id }).limit(1).toArray()
+    const [result] = await this.db
+      .collection(collection)
+      .find({ _id: id })
+      .limit(1)
+      .toArray()
     this.client.close()
 
     if (!result) return null
     return { id: result._id, data: result }
   }
 
-  async update (collection: string, data: Record<string, any>, id: string) : Promise<MongoResult> {
-    if (!collection || !data) throw new Error(MongoErrors.MissingCollectionOrData)
+  async update (
+    collection: string,
+    data: Record<string, any>,
+    id: string
+  ): Promise<MongoResult> {
+    if (!collection || !data) {
+      throw new Error(MongoErrors.MissingCollectionOrData)
+    }
     if (!id && !data._id) throw new Error(MongoErrors.MissingId)
 
     await this.connect()
@@ -83,20 +98,24 @@ export class MongoPlugin {
     const { _id, ...rest } = data
     const flatData = flatten(rest)
 
-    const updated = await this.db.collection(collection).findOneAndUpdate({
-      _id: id || _id
-    }, {
-      $set: flatData
-    }, {
-      returnOriginal: false
-    })
+    const updated = await this.db.collection(collection).findOneAndUpdate(
+      {
+        _id: id || _id
+      },
+      {
+        $set: flatData
+      },
+      {
+        returnOriginal: false
+      }
+    )
     this.client.close()
 
     const { value } = updated
     return { id: value._id, data: value }
   }
 
-  async del (collection: string, id: string) : Promise<MongoResult|null> {
+  async del (collection: string, id: string): Promise<MongoResult | null> {
     if (!collection) throw new Error(MongoErrors.MissingCollection)
     if (!id) throw new Error(MongoErrors.MissingId)
 

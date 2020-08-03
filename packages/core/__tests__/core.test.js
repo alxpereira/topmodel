@@ -36,16 +36,17 @@ test('Model Extended Class with an exposer next to it', () => {
     constructor (data) {
       super(data, {
         exposer: {
-          public: [
-            'firstname',
-            'lastname'
-          ]
+          public: ['firstname', 'lastname']
         }
       })
     }
   }
 
-  const data = { firstname: 'Han', lastname: 'Solo', email: 'falcon@millenium.space' }
+  const data = {
+    firstname: 'Han',
+    lastname: 'Solo',
+    email: 'falcon@millenium.space'
+  }
   const test = new Foo(data)
   const exposed = test.expose('public')
   expect(exposed).not.toBe(data)
