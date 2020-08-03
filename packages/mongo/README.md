@@ -49,6 +49,13 @@ const saved = await user.save()
 console.log(saved) // saved user in mongo
 ```
 
+## Collections
+
+#### Note: by default topmodel core will attribute a table name related to your model name, for example model `User` will become  `user` table in SQL or collection in Mongo.
+
+If you want to force the collection, please refer to the core model option `table` [here](../core/README.md#optionstable) 
+
+
 ## API
 
 Topmodel db connectors has built-in methods extended to your models : 

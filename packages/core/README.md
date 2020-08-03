@@ -70,6 +70,9 @@ Options can power your classes with features, plugins etc...
 
 TopModel includes the following options by default: 
 
+### Database relation
+#### Note: by default topmodel core will attribute a table name related to your model name, for example model `User` will become  `user` table in SQL or collection in Mongo.
+
 ### `options.db`
 You can connect a Plugin to allow your model to interact with a distant database. 
 Our first plugin is [Mongo](/packages/mongo/README.md)
@@ -94,6 +97,27 @@ class User extends Model {
 
 const user = new User({ /*... data */ })
 await user.save() // save to mongo
+```
+
+### `options.table`
+This option is forcing your model to work with a specific db table (for example a collection in Mongo or depending then on the db plugin)
+
+For example is you want to force your [mongo plugin](../mongo/README.md) to work with the collection `parents` 
+```js
+const db = new MongoPlugin({
+    url: MONGO_URL,
+    database: MONGO_DATABASE
+})
+
+const table = 'parents'
+
+class User extends Model {
+    constructor(data){
+        super(data, { db, table })
+    }
+}
+
+// now User will interact with the 'parents' collection
 ```
 
 ### `options.exposer`
