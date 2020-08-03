@@ -1,0 +1,43 @@
+{
+  "name": "sql",
+  "version": "1.0.0",
+  "description": "SQL plugin compatible with topmodel core (wrapper around Knex.js)",
+  "keywords": [
+    "sql",
+    "orm",
+    "es6",
+    "ts",
+    "typescript",
+    "database",
+    "mysql",
+    "postgresl",
+    "pg",
+    "psql",
+    "mariadb",
+    "sqllite"
+  ],
+  "author": "Alexandre Pereira <alexandre.pereira@foundersfactory.co>",
+  "homepage": "https://github.com/alxpereira/topmodel",
+  "license": "WTFPL",
+  "main": "dist/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alxpereira/topmodel.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/alxpereira/topmodel/issues"
+  },
+  "dependencies": {
+    "knex": "^0.21.2"
+  }
+}
