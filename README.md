@@ -26,3 +26,6 @@ yarn add @topmodel/core
 - [Options - Exposer](packages/core/README.md#optionsexposer)
 - [Options - Schema](packages/core/README.md#optionsschema)
 - [Validation](packages/core/README.md#validation)
+
+### Plugins
+- [Mongo](packages/mongo/README.md)

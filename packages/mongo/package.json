@@ -25,5 +25,6 @@
   },
   "dependencies": {
     "mongodb": "^3.5.9"
-  }
+  },
+  "gitHead": "9976be4950e8fe1f94ef9ac88227f47442a024a2"
 }

@@ -88,4 +88,14 @@ export class Model {
 
       return this
     }
+
+    public async del (): Promise<Boolean> {
+      const { db } = this.options
+      if (!db) throw new Error(ModelErrors.MissingDB)
+      if (!this.id) throw new Error(ModelErrors.MissingId)
+
+      const { success } = await db.del(this.table, this.id)
+
+      return success
+    }
 }

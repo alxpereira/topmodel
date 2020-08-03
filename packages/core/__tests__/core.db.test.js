@@ -3,7 +3,7 @@ import { Model, ModelErrors } from '../src'
 
 const testData = { id: '123', data: { id: '123', foo: 'bar' } }
 const testDataUpdated = { id: '123', data: { id: '123', foo: 'bar-updated' } }
-const testDataDeleted = { id: '123', data: { id: '123', foo: 'bar' } }
+const testDataDeleted = { success: true, id: '123' }
 
 class MockDB {
     create = jest.fn(() => Promise.resolve(testData))
@@ -120,5 +120,52 @@ describe('Model Database', () => {
     const exposed = (await test.save()).expose()
     expect(exposed).toBeDefined()
     expect(exposed).toBe(testData.data)
+  })
+
+  test('Model.del should throw if no DB', async () => {
+    class Test extends Model {}
+    const data = { foo: 'bar' }
+    const test = new Test(data)
+
+    try {
+      expect(await test.del()).toThrow()
+    } catch (error) {
+      expect(error.message).toBe(ModelErrors.MissingDB)
+    }
+  })
+
+  test('Model.del should throw if no id', async () => {
+    const db = new MockDB()
+    class Test extends Model {
+      constructor (data) {
+        super(data, { db })
+      }
+    }
+
+    const data = { foo: 'bar' }
+    const test = new Test(data)
+
+    try {
+      expect(await test.del()).toThrow()
+    } catch (error) {
+      expect(error.message).toBe(ModelErrors.MissingId)
+    }
+  })
+
+  test('Model.del should return true', async () => {
+    const db = new MockDB()
+    class Test extends Model {
+      constructor (data) {
+        super(data, { db })
+      }
+    }
+
+    const data = { id: 123 }
+    const test = new Test(data)
+
+    const t = await test.del()
+    expect(t).toBeDefined()
+    expect(db.del).toHaveBeenCalled()
+    expect(t).toBe(true)
   })
 })

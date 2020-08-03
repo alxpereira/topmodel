@@ -1,6 +1,6 @@
 # `@topmodel/core`
 
-### Installation
+## Installation
 
 With `npm`
 ```sh
@@ -11,6 +11,15 @@ or `yarn`
 ```sh
 yarn add @topmodel/core
 ```
+
+## Index
+* [Basics](#basics)
+* [Constructor](#constructor)
+* [Options](#options)
+    * [Database](#optionsdb)
+    * [Exposer](#optionsexposer)
+    * [Schema](#optionsschema)
+* [Schema & Validation](#schema)
 
 ## Basic
 
@@ -33,7 +42,7 @@ const user = new User({ firstname: 'John', lastname: 'Doe' })
 TopModel extended classes can activate features by populating [options](#options) in the constructor super call with the following arguments `super(data, options)`
 
 - `data` - your object data
-- `option` - TopModel options object
+- `options` - TopModel options object
 
 Example 
 ```js
@@ -57,9 +66,39 @@ Options can power your classes with features, plugins etc...
 
 TopModel includes the following options by default: 
 
+### `options.db`
+You can connect a Plugin to allow your model to interact with a distant database. 
+Our first plugin is [Mongo](/packages/mongo/README.md)
+
+Example
+```js
+import { Model } from '@topmodel/core'
+import { MongoPlugin } from '@topmodel/mongo'
+
+const { MONGO_URL, MONGO_DATABASE } = process.env
+
+const db = new MongoPlugin({
+    url: MONGO_URL,
+    database: MONGO_DATABASE
+})
+
+class User extends Model {
+    constructor(data){
+        super(data, { db })
+    }
+}
+
+const user = new User({ /*... data */ })
+await user.save() // save to mongo
+```
 
 ### `options.exposer`
 The exposer feature allows you to display only a part of your object, super useful in API management.
+
+```
+User(id, firstname, lastname, city)
+User.expose('public') => User(id)
+```
 
 Example
 ```js

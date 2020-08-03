@@ -2,6 +2,18 @@
 
 Mongo connector (compatible with `topmodel` models)
 
+## Install
+
+With `npm`
+```sh
+npm install @topmodel/mongo
+```
+
+or `yarn`
+```sh
+yarn add @topmodel/mongo
+```
+
 ## Usage
 
 Setup your mongo connector Plugin and pass it in the model options:
@@ -46,3 +58,44 @@ Topmodel db connectors has built-in methods extended to your models :
 | `save()` |  Promise(Model) | create or update if `data.id` or `data._id`` is specified |
 | `read()` |  Promise(Model) | will retrieve the data in the database (will require `id` or `_id`) |
 | `del()` | Promise(Model) | will delete the data in the database (will require `id` or `_id`) |
+
+### `save`
+Create or update your model in mongo
+
+```js 
+// create
+const user = new User({ email: 'foo@bar.co' })
+
+const saved = await user.save()
+console.log(saved.body) 
+// { _id: '507f1f77bcf86cd799439011' , email: 'foo@bar.co' }
+
+// or update
+
+const user = new User({ _id: '507f1f77bcf86cd799439011', email: 'update@foo.co' })
+
+const updated = await user.save()
+console.log(updated.body)
+// { _id: '507f1f77bcf86cd799439011', email: 'update@foo.co' }
+```
+
+### `read`
+Read data from the database and populate the Model
+
+```js 
+const user = new User({ _id: '507f1f77bcf86cd799439011' })
+await user.read()
+
+console.log(user.body) 
+// { _id: '507f1f77bcf86cd799439011' , email: 'foo@bar.co' }
+```
+
+### `del`
+Delete data in the database
+
+```js 
+const user = new User({ _id: '507f1f77bcf86cd799439011' })
+const deleted = await user.del()
+
+console.log(deleted) // true 
+```
