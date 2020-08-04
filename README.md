@@ -24,9 +24,11 @@ yarn add @topmodel/core
 ### Usage
 
 - [Basics](packages/core/README.md)
+- [Options - Database](packages/core/README.md#optionsdb)
 - [Options - Exposer](packages/core/README.md#optionsexposer)
 - [Options - Schema](packages/core/README.md#optionsschema)
 - [Validation](packages/core/README.md#validation)
 
 ### Plugins
 - [Mongo](packages/mongo/README.md)
+- SQL (soon)
