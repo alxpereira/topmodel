@@ -2,7 +2,8 @@
 
 beautiful models with a lightweight ORM for minimalist coders
 
-![](https://github.com/alxpereira/topmodel/workflows/lint-test/badge.svg)
+![](https://github.com/alxpereira/topmodel/workflows/test/badge.svg)
+![](https://github.com/alxpereira/topmodel/workflows/build/badge.svg)
 [![](https://badgen.now.sh/codecov/c/github/alxpereira/topmodel)](https://codecov.io/gh/alxpereira/topmodel/)
 [![Language Grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/alxpereira/topmodel.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/alxpereira/topmodel/context:javascript)
 ---
