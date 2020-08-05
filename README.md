@@ -32,4 +32,4 @@ yarn add @topmodel/core
 
 ### Plugins
 - [Mongo](packages/mongo/README.md)
-- SQL (soon)
+- [SQL](packages/sql/README.md)
