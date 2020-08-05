@@ -83,8 +83,8 @@ Topmodel db connectors has built-in methods extended to your models :
 | Method   |      Return      |  Comments |
 |----------|:-------------|:------|
 | `save()` |  Promise(Model) | create or update if `data.id` or `data._id`` is specified |
-| `read()` |  Promise(Model) | will retrieve the data in the database (will require `id` or `_id`) |
-| `del()` | Promise(Model) | will delete the data in the database (will require `id` or `_id`) |
+| `read()` |  Promise(Model) | will retrieve the data in the database (will require `id`) |
+| `del()` | Promise(Model) | will delete the data in the database (will require `id`) |
 
 ### `save`
 Create or update your model in psql
