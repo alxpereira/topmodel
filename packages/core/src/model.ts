@@ -1,9 +1,9 @@
 import { Schema, ValidationOutput, SchemaErrors } from './schema'
 
-interface Options {
+interface Options<T> {
   exposer?: Record<string, Array<string>>
   schema?: Schema
-  db?: any
+  db?: T
   table?: string
 }
 
@@ -15,9 +15,9 @@ export enum ModelErrors {
 export class Model {
   private id: string | number
   private data: Record<string, any>
-  private options: Options
+  private options: Options<any>
 
-  constructor (data: Record<string, any>, options?: Options) {
+  constructor (data: Record<string, any>, options?: Options<any>) {
     this.data = data || {}
     this.options = options || {}
 
