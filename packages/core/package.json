@@ -1,6 +1,6 @@
 {
   "name": "@topmodel/core",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "TopModel Core package",
   "keywords": [
     "orm",
