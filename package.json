@@ -29,7 +29,10 @@
     "eslint-plugin-standard": "^4.0.1",
     "husky": "^4.2.5",
     "jest": "^26.1.0",
+    "knex": "^0.21.2",
     "lerna": "^3.22.1",
+    "mock-knex": "^0.4.9",
+    "pg": "^8.3.0",
     "ts-loader": "^7.0.5",
     "tslib": "^2.0.0",
     "typescript": "^3.9.5"
