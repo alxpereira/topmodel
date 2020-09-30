@@ -25,14 +25,12 @@ export enum SQLPluginErrors {
 }
 
 export class SQLPlugin {
-  private dbtype: string
   public knex: any
 
   constructor (options: SQLOptions) {
     const { client, ...connection } = options || {}
     if (!client || !connection) throw new Error(SQLPluginErrors.MissingOptions)
 
-    this.dbtype = client
     this.knex = knex({
       client,
       connection
