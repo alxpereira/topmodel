@@ -69,7 +69,7 @@ const saved = await user.save()
 console.log(saved) // saved user in psql
 ```
 
-## Collections
+## Table
 
 #### Note: by default topmodel core will attribute a table name related to your model name, for example model `User` will become  `user` table in SQL.
 
