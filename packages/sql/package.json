@@ -1,6 +1,6 @@
 {
   "name": "@topmodel/sql",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "SQL plugin compatible with topmodel core (wrapper around Knex.js)",
   "keywords": [
     "sql",
