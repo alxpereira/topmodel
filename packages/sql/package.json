@@ -1,6 +1,6 @@
 {
   "name": "@topmodel/sql",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "SQL plugin compatible with topmodel core (wrapper around Knex.js)",
   "keywords": [
     "sql",
@@ -40,5 +40,9 @@
   },
   "dependencies": {
     "knex": "^0.21.2"
-  }
+  },
+  "publicConfig": {
+    "access": "public"
+  },
+  "gitHead": "99f2e9fe8327fd469465e62fac79f98dee3a657f"
 }
