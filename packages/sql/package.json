@@ -39,7 +39,7 @@
     "url": "https://github.com/alxpereira/topmodel/issues"
   },
   "dependencies": {
-    "knex": "^0.21.2"
+    "knex": "^2.4.0"
   },
   "publicConfig": {
     "access": "public"
