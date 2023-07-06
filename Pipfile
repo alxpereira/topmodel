@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+# Add your packages here
+# e.g. requests = "*"
+
+[dev-packages]
+# Add your development packages here
+# e.g. pytest = "*"
+
+[requires]
+python_version = "3.8"
